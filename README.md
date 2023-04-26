@@ -1,7 +1,7 @@
 <div align="center">
 <h2><a href="https://arxiv.org/abs/2205.13943">Architecture-Agnostic Masked Image Modeling - From ViT back to CNN</a></h2>
 
-[Siyuan Li](https://lupin1998.github.io/)<sup>\*,1,2</sup>, [Di Wu](https://scholar.google.com/citations?user=egz8bGQAAAAJ&hl=zh-CN)<sup>\*,1,2</sup>, [Zelin Zang](https://scholar.google.com/citations?user=foERjnQAAAAJ&hl=en)<sup>1,2</sup>, [Fang Wu](https://smiles724.github.io/)<sup>1,2</sup>, [Stan Z. Li](https://scholar.google.com/citations?user=Y-nyLGIAAAAJ&hl=zh-CN)<sup>†,1</sup>
+[Siyuan Li](https://lupin1998.github.io/)<sup>\*,1,2</sup>, [Di Wu](https://scholar.google.com/citations?user=egz8bGQAAAAJ&hl=zh-CN)<sup>\*,1,2</sup>, [Fang Wu](https://smiles724.github.io/)<sup>1,3</sup>, [Zelin Zang](https://scholar.google.com/citations?user=foERjnQAAAAJ&hl=en)<sup>1,2</sup>, [Stan Z. Li](https://scholar.google.com/citations?user=Y-nyLGIAAAAJ&hl=zh-CN)<sup>†,1</sup>
 
 <sup>1</sup>[Westlake University](https://westlake.edu.cn/), <sup>2</sup>[Zhejiang University](https://www.zju.edu.cn/english/), <sup>2</sup>[Tsinghua University](https://air.tsinghua.edu.cn/en/)
 </div>
@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/44519745/174272666-30bc3177-e61f-4331-9f32-91f47aad6578.png" width=100% height=100% 
+<img src="https://user-images.githubusercontent.com/44519745/234438993-b5a145ab-d345-46ae-9267-25f68379bb62.png" width=100% height=100% 
 class="center">
 </p>
 
@@ -41,8 +41,8 @@ We have released implementations of A2MIM based on [OpenMixup](https://github.co
 - [ ] Update camera-ready version of A2MIM or arXiv.
 - [x] **ImageNet** pre-training and fine-tuning with [OpenMixup](https://github.com/Westlake-AI/openmixup) [[config_pretrain](configs/openmixup/pretrain)] [[config_finetune](configs/openmixup/finetune)]
 - [ ] **ImageNet** pre-training and fine-tuning with [MMPretrain](https://github.com/open-mmlab/mmpretrain)
-- [x] Downstream Transfer to Object Detection on **COCO** with [MMDetection](https://github.com/open-mmlab/mmdetection) [[config](det_mmdetection/configs)]
-- [x] Downstream Transfer to Semantic Segmentation on **ADE20K** [MMSegmentation](https://github.com/open-mmlab/mmsegmentation) [[config](seg_mmsegmentation/configs)]
+- [x] Downstream Transfer to Object Detection on **COCO** with [MMDetection](https://github.com/open-mmlab/mmdetection) [[config](det_mmdetection)]
+- [x] Downstream Transfer to Semantic Segmentation on **ADE20K** [MMSegmentation](https://github.com/open-mmlab/mmsegmentation) [[config](seg_mmsegmentation)]
 - [ ] Analysis tools and results
 - [ ] Visualization of pre-training on Google Colab and Notebook Demo
 
