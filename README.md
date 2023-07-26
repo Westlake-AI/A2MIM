@@ -3,7 +3,7 @@
 
 [Siyuan Li](https://lupin1998.github.io/)<sup>\*,1,2</sup>, [Di Wu](https://scholar.google.com/citations?user=egz8bGQAAAAJ&hl=zh-CN)<sup>\*,1,2</sup>, [Fang Wu](https://smiles724.github.io/)<sup>1,3</sup>, [Zelin Zang](https://scholar.google.com/citations?user=foERjnQAAAAJ&hl=en)<sup>1,2</sup>, [Stan Z. Li](https://scholar.google.com/citations?user=Y-nyLGIAAAAJ&hl=zh-CN)<sup>†,1</sup>
 
-<sup>1</sup>[Westlake University](https://westlake.edu.cn/), <sup>2</sup>[Zhejiang University](https://www.zju.edu.cn/english/), <sup>2</sup>[Tsinghua University](https://air.tsinghua.edu.cn/en/)
+<sup>1</sup>[Westlake University](https://westlake.edu.cn/), <sup>2</sup>[Zhejiang University](https://www.zju.edu.cn/english/), <sup>3</sup>[Tsinghua University](https://air.tsinghua.edu.cn/en/)
 </div>
 
 <p align="center">
@@ -38,12 +38,12 @@ Masked image modeling (MIM), an emerging self-supervised pre-training method, ha
 
 We have released implementations of A2MIM based on [OpenMixup](https://github.com/Westlake-AI/openmixup). In the future, we plan to add A2MIM implementations to [MMPretrain](https://github.com/open-mmlab/mmpretrain). Pre-trained and fine-tuned models are released in [GitHub](https://github.com/Westlake-AI/openmixup/releases/tag/a2mim-in1k-weights) / [Baidu Cloud](https://pan.baidu.com/s/1aj3Lbj_wvyV_1BRzFhPcwQ?pwd=3q5i).
 
-- [ ] Update camera-ready version of A2MIM or arXiv.
+- [x] Update camera-ready version of A2MIM [[arXiv](https://arxiv.org/abs/2205.13943)] [[poster](https://github.com/Lupin1998/Lupin1998.github.io/blob/master/Files/ICML_2023_A2MIM_poster.png)]
 - [x] **ImageNet** pre-training and fine-tuning with [OpenMixup](https://github.com/Westlake-AI/openmixup) [[config_pretrain](configs/openmixup/pretrain)] [[config_finetune](configs/openmixup/finetune)]
 - [ ] **ImageNet** pre-training and fine-tuning with [MMPretrain](https://github.com/open-mmlab/mmpretrain)
 - [x] Downstream Transfer to Object Detection on **COCO** with [MMDetection](https://github.com/open-mmlab/mmdetection) [[config](det_mmdetection)]
 - [x] Downstream Transfer to Semantic Segmentation on **ADE20K** [MMSegmentation](https://github.com/open-mmlab/mmsegmentation) [[config](seg_mmsegmentation)]
-- [ ] Analysis tools and results
+- [x] Analysis tools and results [[rep_bottleneck](representation_bottleneck)]
 - [ ] Visualization of pre-training on Google Colab and Notebook Demo
 
 ## Pre-training on ImageNet
