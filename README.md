@@ -88,7 +88,7 @@ Our implementation is mainly based on the following codebases. We gratefully tha
 
 If you find this repository helpful, please consider citing our paper:
 ```
-@inproceedings{zbontar2021barlow,
+@inproceedings{icml2023a2mim,
   title={Architecture-Agnostic Masked Image Modeling -- From ViT back to CNN},
   author={Li, Siyuan and Wu, Di and Wu, Fang and Zang, Zelin and Li, Stan. Z.},
   booktitle={International Conference on Machine Learning},
