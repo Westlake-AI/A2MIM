@@ -71,7 +71,7 @@ PORT=29500 bash tools/dist_train_ft_8gpu.sh configs/openmixup/finetune/imagenet/
 
 ## Results and Models
 
-We provide the summarization of pre-training and fine-tuning results of A2MIM and baselines on ImageNet-1K.
+We provide the summarization of pre-training (800 or 300 epochs) and fine-tuning (100 or 300 epochs) results of A2MIM and baselines on ImageNet-1K.
 
 | Methods | # Params. | Supervision | SimMIM | A2MIM |
 |---|:---:|:---:|:---:|:---:|
@@ -86,12 +86,12 @@ We provide the summarization of pre-training and fine-tuning results of A2MIM an
 | ConvNeXt-S | 50.2 | 83.1 | 83.2 | 83.7 |
 | ConvNeXt-B | 88.6 | 83.5 | 83.6 | 84.1 |
 
-Config files, models, logs, and visualization of reconstructions are provided as follows. These files can also be downloaded from [a2mim-in1k-weights](https://github.com/Westlake-AI/openmixup/releases/tag/a2mim-in1k-weights) or **Baidu Cloud**: [A2MIM (3q5i)](https://pan.baidu.com/s/1aj3Lbj_wvyV_1BRzFhPcwQ?pwd=3q5i).
+Config files, models, logs, and visualization of reconstructions are provided as follows. These files can also be downloaded from [a2mim-in1k-weights](https://github.com/Westlake-AI/A2MIM/releases/tag/a2mim-in1k-weights), [OpenMixup-a2mim-in1k-weights](https://github.com/Westlake-AI/openmixup/releases/tag/a2mim-in1k-weights) or **Baidu Cloud**: [A2MIM (3q5i)](https://pan.baidu.com/s/1aj3Lbj_wvyV_1BRzFhPcwQ?pwd=3q5i).
 
 <details>
   <summary>ViT-S/B/L on ImageNet-1K.</summary>
 
-  | Method | Backbone | Epoch | Fine-tuning Top-1 | Pre-training | Fine-tuning | Results |
+  | Method | Backbone | PT Epoch | FT Top-1 | Pre-training | Fine-tuning | Results |
   |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
   | SimMIM | ViT-Small | 800 | 81.7 | [config](https://github.com/Westlake-AI/openmixup/tree/main/configs/selfsup/simmim/imagenet/vit_small_sz224_8xb256_step_fp16_ep800.py) \| [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_vit_small_sz224_8xb256_step_fp16_ep800_full.pth) \| [vis](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_vit_small_sz224_8xb256_step_fp16_ep800_vis.zip) | [config](https://github.com/Westlake-AI/openmixup/tree/main/configs/benchmarks/classification/imagenet/vit_small_p16_swin_ft_simmim_sz224_8xb128_cos_ep100.py) | [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_vit_small_sz224_8xb256_step_fp16_ep800_ft.pth) \| [log](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_vit_small_sz224_8xb256_step_fp16_ep800_ft.log.json) |
   | A2MIM | ViT-Small | 800 | 82.1 | [config](https://github.com/Westlake-AI/openmixup/tree/main/configs/selfsup/a2mim/imagenet/vit_small_l0_sz224_8xb256_step_ep800.py) \| [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_vit_small_sz224_8xb256_step_fp16_ep800_full.pth) \| [vis](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_vit_small_sz224_8xb256_step_fp16_ep800_vis.zip) | [config](https://github.com/Westlake-AI/openmixup/tree/main/configs/benchmarks/classification/imagenet/vit_small_p16_swin_ft_simmim_sz224_8xb128_cos_ep200.py) | [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_vit_small_sz224_8xb256_step_fp16_ep800_ft.pth) \| [log](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_vit_small_sz224_8xb256_step_fp16_ep800_ft.log.json) |
@@ -103,7 +103,7 @@ Config files, models, logs, and visualization of reconstructions are provided as
 <details>
   <summary>ResNet-50/101/152/200 on ImageNet-1K.</summary>
 
-  | Method | Backbone | Epoch | Fine-tuning (A2) Top-1 | Pre-training | Fine-tuning | Results |
+  | Method | Backbone | PT Epoch | FT (A2) Top-1 | Pre-training | Fine-tuning | Results |
   |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
   | SimMIM | ResNet-50 | 300 | 79.9 | [config](https://github.com/Westlake-AI/openmixup/tree/main/configs/selfsup/simmim/imagenet/r50_sz224_8xb256_fp16_ep300.py) \| [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_r50_sz224_8xb256_cos_fp16_ep300_full.pth) \| [vis](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_r50_sz224_8xb256_cos_fp16_ep300_vis.zip) | [RSB A2](https://github.com/Westlake-AI/openmixup/tree/main/configs/benchmarks/classification/imagenet/r50_rsb_a2_ft_sz224_8xb256_cos_fp16_ep300.py) | - |
   | A2MIM | ResNet-50 | 100 | 78.8 | [config](https://github.com/Westlake-AI/openmixup/tree/main/configs/selfsup/a2mim/imagenet/r50_l3_sz224_init_8xb256_cos_ep100.py) \| [ckpt](https://github.com/Westlake-AI/openmixup/releases/download/a2mim-in1k-weights/full_a2mim_r50_l3_sz224_init_8xb256_cos_ep100.pth) \| [vis](https://github.com/Westlake-AI/openmixup/releases/download/a2mim-in1k-weights/visualization_a2mim_r50_l3_sz224_init_8xb256_cos_ep100.zip) | [RSB A3](https://github.com/Westlake-AI/openmixup/blob/main/configs/benchmarks/classification/imagenet/r50_rsb_a3_ft_sz160_4xb512_cos_fp16_ep100.py) | [ckpt](https://github.com/Westlake-AI/openmixup/releases/download/a2mim-in1k-weights/a2mim_r50_l3_sz224_init_8xb256_cos_ep100_ft_rsb_a3.pth) \| [log](https://github.com/Westlake-AI/openmixup/releases/download/a2mim-in1k-weights/a2mim_r50_l3_sz224_init_8xb256_cos_ep100_ft_rsb_a3.log.json) |
@@ -118,7 +118,7 @@ Config files, models, logs, and visualization of reconstructions are provided as
 <details>
   <summary>ConvNeXt-S/B on ImageNet-1K.</summary>
 
-  | Method | Backbone | Epoch | Fine-tuning (A2) Top-1 | Pre-training | Fine-tuning | Results |
+  | Method | Backbone | PT Epoch | FT (A2) Top-1 | Pre-training | Fine-tuning | Results |
   |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
   | SimMIM | ConvNeXt-S | 300 | 83.2 | [config](https://github.com/Westlake-AI/openmixup/tree/main/configs/selfsup/simmim/imagenet/convnext_small_sz224_8xb256_fp16_ep300.py) \| [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_convnext_small_sz224_8xb256_cos_fp16_ep300_full.pth) \| [vis](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_convnext_small_sz224_8xb256_cos_fp16_ep300_vis.zip) | [RSB A2](https://github.com/Westlake-AI/openmixup/tree/main/configs/benchmarks/classification/imagenet/convnext_s_spark_ft_sz224_8xb256_cos_fp16_ep300.py) | - |
   | A2MIM | ConvNeXt-S | 300 | 83.7 | [config](https://github.com/Westlake-AI/openmixup/tree/main/configs/selfsup/a2mim/imagenet/convnext_s_l3_sz224_init_8xb256_cos_ep300.py) \| [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/a2mim_convnext_small_l3_sz224_init_8xb256_cos_ep300_full.pth) \| [vis](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/a2mim_convnext_small_l3_sz224_init_8xb256_cos_ep300_vis.zip) | [RSB A2](https://github.com/Westlake-AI/openmixup/tree/main/configs/benchmarks/classification/imagenet/convnext_s_spark_ft_sz224_8xb256_cos_fp16_ep300.py) | [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/a2mim_convnext_small_l3_sz224_init_8xb256_cos_ep300_ft_rsb_a2.pth) \| [log](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/a2mim_convnext_small_l3_sz224_init_8xb256_cos_ep300_ft_rsb_a2.log.json) |
