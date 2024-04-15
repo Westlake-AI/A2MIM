@@ -11,10 +11,6 @@
     <img src="https://img.shields.io/badge/arXiv-2205.13943-b31b1b.svg?style=flat" /></a>
 <a href="https://github.com/Westlake-AI/A2MIM/blob/main/LICENSE" alt="license">
     <img src="https://img.shields.io/badge/license-Apache--2.0-%23B7A800" /></a>
-<!-- <a href="https://colab.research.google.com/github/Westlake-AI/MogaNet/blob/main/demo.ipynb" alt="Colab">
-    <img src="https://colab.research.google.com/assets/colab-badge.svg" /></a> -->
-<!-- <a href="https://huggingface.co/MogaNet" alt="Huggingface">
-    <img src="https://img.shields.io/badge/huggingface-MogaNet-blueviolet" /></a> -->
 </p>
 
 <p align="center">
@@ -43,7 +39,7 @@ We have released implementations of A2MIM based on [OpenMixup](https://github.co
 - [ ] **ImageNet** pre-training and fine-tuning with [MMPretrain](https://github.com/open-mmlab/mmpretrain)
 - [x] Downstream Transfer to Object Detection on **COCO** with [MMDetection](https://github.com/open-mmlab/mmdetection) [[config](det_mmdetection)]
 - [x] Downstream Transfer to Semantic Segmentation on **ADE20K** [MMSegmentation](https://github.com/open-mmlab/mmsegmentation) [[config](seg_mmsegmentation)]
-- [x] Analysis tools and results [[rep_bottleneck](representation_bottleneck)]
+- [x] Analysis tools and results [[rep_bottleneck](analysis_tools/representation_bottleneck)]
 - [ ] Visualization of pre-training on Google Colab and Notebook Demo
 
 ## Pre-training on ImageNet
@@ -69,6 +65,12 @@ python tools/model_converters/extract_backbone_weights.py work_dirs/openmixup/pr
 PORT=29500 bash tools/dist_train_ft_8gpu.sh configs/openmixup/finetune/imagenet/r50_rsb_a3_ft_sz160_4xb512_cos_fp16_ep100.py ${PATH_TO_CHECKPOINT}
 ```
 
+### 3. Implementation Details
+
+* A2MIM model: In [a2mim.py](https://github.com/Westlake-AI/openmixup/blob/main/openmixup/models/selfsup/a2mim.py), the A2MIM method takes input samples, applies masking, encodes and caculates the MIM losses.
+* A2MIM head: In [mim_head.py](https://github.com/Westlake-AI/openmixup/blob/main/openmixup/models/heads/mim_head.py), two MIM losses are computed, where [regression_loss.py](https://github.com/Westlake-AI/openmixup/blob/main/openmixup/models/losses/regression_loss.py) caculates the L1 loss and [focal_loss.py](https://github.com/Westlake-AI/openmixup/blob/main/openmixup/models/losses/focal_loss.py) caculates for the Fourier domain loss.
+* Dataloader: In [masked_image.py](https://github.com/Westlake-AI/openmixup/blob/main/openmixup/datasets/masked_image.py), loading the processed RGB images with the masked RGB mean.
+
 ## Results and Models
 
 We provide the summarization of pre-training (800 or 300 epochs) and fine-tuning (100 or 300 epochs) results of A2MIM and baselines on ImageNet-1K.
@@ -88,7 +90,7 @@ We provide the summarization of pre-training (800 or 300 epochs) and fine-tuning
 
 Config files, models, logs, and visualization of reconstructions are provided as follows. These files can also be downloaded from [a2mim-in1k-weights](https://github.com/Westlake-AI/A2MIM/releases/tag/a2mim-in1k-weights), [OpenMixup-a2mim-in1k-weights](https://github.com/Westlake-AI/openmixup/releases/tag/a2mim-in1k-weights) or **Baidu Cloud**: [A2MIM (3q5i)](https://pan.baidu.com/s/1aj3Lbj_wvyV_1BRzFhPcwQ?pwd=3q5i).
 
-<details>
+<details open>
   <summary>ViT-S/B/L on ImageNet-1K.</summary>
 
   | Method | Backbone | PT Epoch | FT Top-1 | Pre-training | Fine-tuning | Results |
@@ -125,6 +127,15 @@ Config files, models, logs, and visualization of reconstructions are provided as
   | SimMIM | ConvNeXt-B | 300 | 83.6 | [config](https://github.com/Westlake-AI/openmixup/tree/main/configs/selfsup/simmim/imagenet/convnext_base_sz224_8xb256_fp16_ep300.py) \| [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_convnext_base_sz224_8xb256_cos_fp16_ep300_full.pth) | [RSB A2](https://github.com/Westlake-AI/openmixup/tree/main/configs/benchmarks/classification/imagenet/convnext_b_spark_ft_sz224_8xb256_cos_fp16_ep300.py) | [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_convnext_base_sz224_8xb256_cos_fp16_ep300_ft.pth) \| [log](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/simmim_convnext_base_sz224_8xb256_cos_fp16_ep300_ft.log.json) |
   | A2MIM | ConvNeXt-B | 300 | 84.1 | [config](https://github.com/Westlake-AI/openmixup/tree/main/configs/selfsup/a2mim/imagenet/convnext_b_l3_sz224_init_8xb256_cos_ep300.py) \| [ckpt](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/a2mim_convnext_base_l3_sz224_init_8xb256_cos_fp16_ep300_full.pth) | [RSB A2](https://github.com/Westlake-AI/openmixup/tree/main/configs/benchmarks/classification/imagenet/convnext_b_spark_ft_sz224_8xb256_cos_fp16_ep300.py) | [ckpt (A2)](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/a2mim_convnext_base_l3_sz224_init_8xb256_cos_ep300_ft_rsb_a2.pth) \| [ckpt (A3)](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/a2mim_convnext_base_l3_sz224_init_8xb256_cos_ep300_ft_rsb_a3.pth) \| [log (A2)](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/a2mim_convnext_base_l3_sz224_init_8xb256_cos_ep300_ft_rsb_a2.log.json) \| [log (A3)](https://github.com/Westlake-AI/A2MIM/releases/download/a2mim-in1k-weights/a2mim_convnext_base_l3_sz224_init_8xb256_cos_ep300_ft_rsb_a3.log.json) |
 </details>
+
+### 4. Empirical Studies
+
+We provided interpretation of how masked image modeling works with [representation bottleneck]() based on ViTs and CNNs. As shown in Figure 1/5/A1/A2 in [A2MIM](https://arxiv.org/abs/2205.13943) and following figures, we visualize the multi-order interation strengths with [representation_bottleneck](https://github.com/Westlake-AI/A2MIM/tree/main/analysis_tools/representation_bottleneck). We also provided analysis from frequency perspectives in Figure A3/A4 in [A2MIM](https://arxiv.org/abs/2205.13943) based on [fourier_analysis](https://github.com/Westlake-AI/A2MIM/tree/main/analysis_tools/fourier_analysis).
+
+<p align="center">
+<img src="https://github.com/Westlake-AI/A2MIM/assets/44519745/1b5470b3-51f9-4585-9ff2-eeec34cef766" width=100% height=100% 
+class="center">
+</p>
 
 ## License
 

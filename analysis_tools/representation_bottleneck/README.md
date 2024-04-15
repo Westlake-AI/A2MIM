@@ -36,4 +36,11 @@ Please cite the relevant papers if you find this repository useful in your resea
   year={2022},
   volume={abs/2111.06236}
 }
+
+@inproceedings{icml2023a2mim,
+  title={Architecture-Agnostic Masked Image Modeling -- From ViT back to CNN},
+  author={Li, Siyuan and Wu, Di and Wu, Fang and Zang, Zelin and Li, Stan. Z.},
+  booktitle={International Conference on Machine Learning},
+  year={2023},
+}
 ```
